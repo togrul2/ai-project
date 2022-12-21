@@ -49,7 +49,9 @@ df['Prices'] = df['Prices'].apply(lambda x: float(x))
 
 df.drop('Address', axis=1, inplace=True)
 
-plt.plot(df.Prices, df.Area)
+st.write("Relation between price and area")
+# plt.plot(df.Prices, df.Area)
+sns.scatterplot(x="Prices", y="Area", data=df)
 st.pyplot()
 
 X = df.loc[:, df.columns != 'Prices']
@@ -88,21 +90,21 @@ sns.histplot(x='Area', data=df)
 
 # Show the plot
 # TODO: add
-st.write("")
+st.write("Histogram of area")
 plt.show()
 st.pyplot()
 
 sns.barplot(x="Room", y="Prices", data=df)
 
 # TODO: add
-st.write("")
+st.write("Relation between price and room")
 plt.show()
 st.pyplot()
 
 sns.scatterplot(x="Prices", y="Area", data=df)
 
 # TODO: add
-st.write()
+st.write("Relation between area and price")
 plt.show()
 st.pyplot()
 
@@ -110,4 +112,5 @@ buffer = io.StringIO()
 df.info(buf=buffer)
 st.text(buffer.getvalue())
 
+st.write("Data")
 st.dataframe(df)
