@@ -46,6 +46,7 @@ df['Room'] = df['Room'].apply(lambda x: float(x))
 df['Prices'] = df['Prices'].apply(prices)
 
 df['Prices'] = df['Prices'].apply(lambda x: float(x))
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 df.drop('Address', axis=1, inplace=True)
@@ -112,3 +113,9 @@ st.text(buffer.getvalue())
 
 st.write("Data")
 st.dataframe(df)
+
+st.write("Relationships between variables within a dataset")
+plt.figure(figsize=(15,10))
+sns.pairplot(df,aspect=1.5)
+plt.show()
+st.pyplot()
